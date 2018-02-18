@@ -30,6 +30,8 @@ describe('Hero', function() {
   });
 
   it('should be able to gain 1.5 times nutrition if fav food', function() {
+    // We don't need to instantiate a whole new Food object to test the effect in hero
+    // this strategy continues in later tests
     const foodStub = { name:'pizza', nutrition:20 };
     hero.eat(foodStub);
     assert.strictEqual(hero.health, 130);
