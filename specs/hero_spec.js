@@ -57,10 +57,12 @@ describe('Hero', function() {
     it('by a property', function(){
       const task1 = {difficulty: 1};
       const task2 = {difficulty: 2};
+      const task3 = {difficulty: 3};
       hero.addTask(task2);
+      hero.addTask(task3);
       hero.addTask(task1);
       hero.sortTasksBasic("difficulty");
-      assert.deepStrictEqual(hero.tasks, [task1, task2])
+      assert.deepStrictEqual(hero.tasks, [task1, task2, task3])
     });
   })
 
