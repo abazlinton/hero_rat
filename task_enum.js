@@ -1,7 +1,6 @@
 // we have no native enums so this is a workaround
 // taskEnum.DIFFICULTY.MEDIUM === 1
 // means we can go from different naming structures / rankings to a number
-// imagine BRONZE = 1, SILVER = 2, GOLD = 3 for example
 // helps with sorting tasks (see hero.js)
 
 const taskEnum = {
