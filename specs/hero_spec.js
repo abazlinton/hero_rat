@@ -1,7 +1,7 @@
 const Hero = require('../hero');
 const Food = require('../food');
 const assert = require('assert');
-const Enums = require("../task_enum.js");
+const taskEnum = require("../task_enum.js");
 
 describe('Hero', function() {
 
@@ -66,9 +66,9 @@ describe('Hero', function() {
 
   describe('should be able to sort tasks - advanced', function(){
     it('by difficulty', function(){
-      const easy = { difficulty: Enums.DIFFICULTY.EASY };
-      const medium = { difficulty: Enums.DIFFICULTY.MEDIUM };
-      const hard = { difficulty: Enums.DIFFICULTY.HARD };
+      const easy = { difficulty: taskEnum.DIFFICULTY.EASY };
+      const medium = { difficulty: taskEnum.DIFFICULTY.MEDIUM };
+      const hard = { difficulty: taskEnum.DIFFICULTY.HARD };
       hero.addTask(hard);
       hero.addTask(easy);
       hero.addTask(medium);
@@ -76,9 +76,9 @@ describe('Hero', function() {
       assert.deepStrictEqual( hero.tasks, [easy, medium, hard]);
     });
     it('by urgency', function(){
-      const low = { urgency: Enums.URGENCY.LOW };
-      const medium = { urgency: Enums.URGENCY.MEDIUM };
-      const high = { urgency: Enums.URGENCY.HIGH };
+      const low = { urgency: taskEnum.URGENCY.LOW };
+      const medium = { urgency: taskEnum.URGENCY.MEDIUM };
+      const high = { urgency: taskEnum.URGENCY.HIGH };
       hero.addTask(medium);
       hero.addTask(high);
       hero.addTask(low);
