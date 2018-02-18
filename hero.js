@@ -20,6 +20,19 @@ Hero.prototype.addTask = function(task){
   this.tasks.push(task);
 }
 
+Hero.prototype.viewCompleteTasks = function(){
+  return this.tasks.filter(function(task){
+    return task.complete === true
+  })
+}
+
+Hero.prototype.viewIncompleteTasks = function(){
+  return this.tasks.filter(function(task){
+    return task.complete === false
+  })
+}
+
+
 Hero.prototype.sortTasksBasic = function(numericProperty){
   // we can access properties with brackets (using string keys) as well as dot notation - e.g. task["urgency"]
 

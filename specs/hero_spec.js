@@ -55,6 +55,23 @@ describe('Hero', function() {
     assert.deepStrictEqual(hero.tasks[0], taskStub);
   });
 
+  it('should be able to view completed tasks', function(){
+    hero.addTask({complete: true});
+    hero.addTask({complete: false});
+    hero.addTask({complete: false});
+    const completeTasks = hero.viewCompleteTasks();
+    const expected = [{complete: true}];
+    assert.deepStrictEqual(completeTasks, expected);
+  });
+  it('should be able to view incomplete tasks', function(){
+    hero.addTask({complete: true});
+    hero.addTask({complete: false});
+    hero.addTask({complete: false});
+    const incompleteTasks = hero.viewIncompleteTasks();
+    const expected = [{complete: false}, {complete: false}];
+    assert.deepStrictEqual(incompleteTasks, expected);
+  });
+
   describe('should be able to sort tasks - basic', function(){
     it('by a property', function(){
       const task1 = {difficulty: 1};
