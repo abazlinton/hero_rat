@@ -22,6 +22,7 @@ Hero.prototype.addTask = function(task){
 
 Hero.prototype.sortTasksBasic = function(numericProperty){
   // we can access properties with brackets (using string keys) as well as dot notation - e.g. task["urgency"]
+
   this.tasks.sort(function(task1, task2) {
     return task1[numericProperty] - task2[numericProperty];
   });
@@ -30,6 +31,7 @@ Hero.prototype.sortTasksBasic = function(numericProperty){
 Hero.prototype.sortTasks = function(property){
   // check type of supplied property in first task
   // choose sort mechanism based on this
+  
   if (typeof this.tasks[0][property] === 'number'){
     this.tasks.sort(function(task1, task2) {
       return task1[property] - task2[property]
