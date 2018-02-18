@@ -22,20 +22,20 @@ Hero.prototype.addTask = function(task){
   this.tasks.push(task);
 }
 
-Hero.prototype.sortTasksBasic = function(property){
-  this.tasks.sort(function(a, b) {
-    return a[property] = b[property];
+Hero.prototype.sortTasksBasic = function(numericProperty){
+  this.tasks.sort(function(task1, task2) {
+    return task1[numericProperty] = task2[numericProperty];
   });
 }
 
 Hero.prototype.sortTasks = function(property){
   if (typeof this.tasks[0][property] === 'number'){
-    this.tasks.sort(function(a, b) {
-      return a[property] - b[property]
+    this.tasks.sort(function(task1, task2) {
+      return task1[property] - task2[property]
     })
   } else if (typeof this.tasks[0][property] === 'string') {
-    this.tasks.sort(function(a, b) {
-      return a[property].localeCompare(b[property])
+    this.tasks.sort(function(task1, task2) {
+      return task1[property].localeCompare(task2[property])
     })
   }
 }
