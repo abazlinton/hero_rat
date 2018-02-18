@@ -1,11 +1,11 @@
-var Hero = require('../hero');
-var Food = require('../food');
-var assert = require('assert');
-var Enums = require("../enums.js");
+const Hero = require('../hero');
+const Food = require('../food');
+const assert = require('assert');
+const Enums = require("../task_enum.js");
 
 describe('Hero', function() {
 
-  var hero;
+  let hero;
 
   beforeEach(function(){
     hero = new Hero({name: 'Ift', favouriteFood:'pizza'});
@@ -24,19 +24,19 @@ describe('Hero', function() {
   });
 
   it('should be able to gain health through eating', function() {
-    var foodStub = { name:'aFood', nutrition: 20};
+    const foodStub = { name:'aFood', nutrition: 20};
     hero.eat(foodStub);
     assert.strictEqual(hero.health, 120);
   });
 
   it('should be able to gain 1.5 times nutrition if fav food', function() {
-    var foodStub = { name:'pizza', nutrition:20 };
+    const foodStub = { name:'pizza', nutrition:20 };
     hero.eat(foodStub);
     assert.strictEqual(hero.health, 130);
   });
 
   it('should lose health if made poisonous', function() {
-    var food = new Food({name: 'cake', nutrition: 20});
+    const food = new Food({name: 'cake', nutrition: 20});
     food.poison();
     hero.eat(food);
     assert.strictEqual(hero.health, 80);
@@ -48,37 +48,44 @@ describe('Hero', function() {
   });
 
   it('should be able add a task', function(){
-    var taskStub = {description: "Kill a wolf"};
+    const taskStub = {description: "Kill a wolf"};
     hero.addTask(taskStub);
     assert.deepEqual(hero.tasks[0], taskStub);
   });
 
   describe('should be able to sort tasks -', function(){
     it('by difficulty', function(){
-      var easy = { difficulty: Enums.DIFFICULTY.EASY };
-      var medium = { difficulty: Enums.DIFFICULTY.MEDIUM };
-      var hard = { difficulty: Enums.DIFFICULTY.HARD };
-      hero.addTask(hard); 
-      hero.addTask(easy); 
+      const easy = { difficulty: Enums.DIFFICULTY.EASY };
+      const medium = { difficulty: Enums.DIFFICULTY.MEDIUM };
+      const hard = { difficulty: Enums.DIFFICULTY.HARD };
+      hero.addTask(hard);
+      hero.addTask(easy);
       hero.addTask(medium);
-      hero.sortTask("difficulty");
+      hero.sortTasks("difficulty");
       assert.deepEqual( hero.tasks, [easy, medium, hard]);
-    });   
+    });
     it('by urgency', function(){
-      var low = { urgency: Enums.URGENCY.LOW };
-      var medium = { urgency: Enums.URGENCY.MEDIUM };
-      var high = { urgency: Enums.URGENCY.HIGH };
-      hero.addTask(medium); 
-      hero.addTask(high); 
+      const low = { urgency: Enums.URGENCY.LOW };
+      const medium = { urgency: Enums.URGENCY.MEDIUM };
+      const high = { urgency: Enums.URGENCY.HIGH };
+      hero.addTask(medium);
+      hero.addTask(high);
       hero.addTask(low);
-      hero.sortTask("urgency");
+      hero.sortTasks("urgency");
       assert.deepEqual( hero.tasks, [low, medium, high]);
     });
-    xit('by reward', function(){
-      hero.addTask()
-    });   
+    it('by reward', function(){
+      const firstInAlphabet = "A task";
+      const lastInAlphabet = "Z task";
+      const firstTask = {reward: firstInAlphabet};
+      const lastTask = {reward: lastInAlphabet};
+      hero.addTask(lastTask);
+      hero.addTask(firstTask);
+      hero.sortTasks("reward");
+      assert.deepStrictEqual( hero.tasks, [firstTask, lastTask]);
+    });
   })
-    
-  
+
+
 
 });

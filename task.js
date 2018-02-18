@@ -1,4 +1,4 @@
-var Task = function(params){
+const Task = function(params){
   this.description = params.description;
   this.difficulty = params.difficulty;
   this.urgency = params.urgency;

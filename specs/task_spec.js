@@ -1,15 +1,16 @@
-var Task = require('../task');
-var assert = require('assert');
+const Task = require('../task');
+const assert = require('assert');
+const taskEnum = require('../task_enum');
 
 describe('Task', function() {
 
-  var killWolf;
+  let killWolf;
 
   beforeEach(function(){
-    var taskDetail = {
+    const taskDetail = {
       description: "Kill a wolf",
-      difficulty: "hard",
-      urgency: "high",
+      difficulty: taskEnum.DIFFICULTY.HARD,
+      urgency: taskEnum.URGENCY.HIGH,
       reward: "Bravery boost",
       complete: false
     }
@@ -21,19 +22,19 @@ describe('Task', function() {
   });
 
   it('should have a difficulty level', function() {
-    assert.strictEqual(killWolf.difficulty, "hard");
+    assert.strictEqual(killWolf.difficulty, 2);
   });
 
   it('should have a urgency level', function() {
-    assert.strictEqual(killWolf.urgency, "high");
+    assert.strictEqual(killWolf.urgency, 2);
   });
 
   it('should have a reward', function(){
-    assert.strictEqual(killWolf.reward, "Bravery boost");    
+    assert.strictEqual(killWolf.reward, "Bravery boost");
   });
 
   it('should start as not complete', function() {
-    assert.strictEqual(killWolf.complete, false);    
+    assert.strictEqual(killWolf.complete, false);
   });
 
   it('should be able to be marked complete', function() {

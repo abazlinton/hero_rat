@@ -1,6 +1,6 @@
 
 
-var Hero = function (spec) {
+const Hero = function (spec) {
   this.name = spec.name;
   this.health = 100;
   this.favouriteFood = spec.favouriteFood;
@@ -8,7 +8,7 @@ var Hero = function (spec) {
 };
 
 Hero.prototype.eat = function(food) {
-  var multiplier = 1;
+  let multiplier = 1;
   if (food.name === this.favouriteFood) {
     multiplier = 1.5;
   }
@@ -22,11 +22,16 @@ Hero.prototype.addTask = function(task){
   this.tasks.push(task);
 }
 
-Hero.prototype.sortTask = function(property){
-  var sortedTasks = [];
-  sortedTasks = this.tasks.sort(function(a, b) {
-    return a[property] - b[property]
-  })
+Hero.prototype.sortTasks = function(property){
+  if (typeof this.tasks[0][property] === 'number'){
+    this.tasks.sort(function(a, b) {
+      return a[property] - b[property]
+    })
+  } else if (typeof this.tasks[0][property] === 'string') {
+    this.tasks.sort(function(a, b) {
+      return a[property].localeCompare(b[property])
+    })
+  }
 }
 
 module.exports = Hero;

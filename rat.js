@@ -1,11 +1,9 @@
-var Rat = function(name) {
+const Rat = function(name) {
   this.name = name;
 };
 
-Rat.prototype = {
-  touchFood: function(food) {
-    food.poison();
-  }
-};
+Rat.prototype.touchFood = function(food) {
+  food.poison();
+}
 
 module.exports = Rat;

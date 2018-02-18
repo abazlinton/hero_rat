@@ -1,4 +1,4 @@
-var Enums = {
+const taskEnum = {
   DIFFICULTY: {
     EASY: 0,
     MEDIUM: 1,
@@ -11,5 +11,4 @@ var Enums = {
   }
 }
 
-module.exports = Enums;
-
+module.exports = taskEnum;
