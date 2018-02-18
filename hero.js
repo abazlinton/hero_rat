@@ -22,6 +22,12 @@ Hero.prototype.addTask = function(task){
   this.tasks.push(task);
 }
 
+Hero.prototype.sortTasksBasic = function(property){
+  this.tasks.sort(function(a, b) {
+    return a[property] = b[property];
+  });
+}
+
 Hero.prototype.sortTasks = function(property){
   if (typeof this.tasks[0][property] === 'number'){
     this.tasks.sort(function(a, b) {

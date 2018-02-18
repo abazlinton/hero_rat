@@ -50,10 +50,21 @@ describe('Hero', function() {
   it('should be able add a task', function(){
     const taskStub = {description: "Kill a wolf"};
     hero.addTask(taskStub);
-    assert.deepEqual(hero.tasks[0], taskStub);
+    assert.deepStrictEqual(hero.tasks[0], taskStub);
   });
 
-  describe('should be able to sort tasks -', function(){
+  describe('should be able to sort tasks - basic', function(){
+    it('by a property', function(){
+      const task1 = {difficulty: 1};
+      const task2 = {difficulty: 2};
+      hero.addTask(task2);
+      hero.addTask(task1);
+      hero.sortTasksBasic("difficulty");
+      assert.deepStrictEqual(hero.tasks, [task1, task2])
+    });
+  })
+
+  describe('should be able to sort tasks - advanced', function(){
     it('by difficulty', function(){
       const easy = { difficulty: Enums.DIFFICULTY.EASY };
       const medium = { difficulty: Enums.DIFFICULTY.MEDIUM };
@@ -62,7 +73,7 @@ describe('Hero', function() {
       hero.addTask(easy);
       hero.addTask(medium);
       hero.sortTasks("difficulty");
-      assert.deepEqual( hero.tasks, [easy, medium, hard]);
+      assert.deepStrictEqual( hero.tasks, [easy, medium, hard]);
     });
     it('by urgency', function(){
       const low = { urgency: Enums.URGENCY.LOW };
@@ -72,7 +83,7 @@ describe('Hero', function() {
       hero.addTask(high);
       hero.addTask(low);
       hero.sortTasks("urgency");
-      assert.deepEqual( hero.tasks, [low, medium, high]);
+      assert.deepStrictEqual( hero.tasks, [low, medium, high]);
     });
     it('by reward', function(){
       const firstInAlphabet = "A task";
