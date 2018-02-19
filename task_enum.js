@@ -1,6 +1,9 @@
 // we have no native enums so this is a workaround
-// taskEnum.DIFFICULTY.MEDIUM === 1
-// means we can go from different naming structures / rankings to a number
+// take this as one solution, not the ideal solution
+// not sure how 'JavaScripty' it is. But demonstrates one way of mapping
+// from a readable naming structure to a number
+// so taskEnum.DIFFICULTY.MEDIUM === 1
+// 
 // helps with sorting tasks (see hero.js)
 
 const taskEnum = {
