@@ -41,13 +41,10 @@ Hero.prototype.sortTasksBasic = function(numericProperty){
   });
 }
 
-Hero.prototype.sortTasks = function(property){
-  // check type of supplied property in first task
-  // choose sort mechanism based on this
-
-  if (typeof this.tasks[0][property] === 'number'){
+Hero.prototype.sortTasks = function(property, sortType){
+  if (sortType === 'LowToHigh'){
     this.sortTasksBasic(property);
-  } else if (typeof this.tasks[0][property] === 'string') {
+  } else if (sortType === 'Alphabetical') {
     this.tasks.sort(function(task1, task2) {
       return task1[property].localeCompare(task2[property])
     })

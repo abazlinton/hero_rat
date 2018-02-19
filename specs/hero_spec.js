@@ -93,7 +93,7 @@ describe('Hero', function() {
       hero.addTask(hard);
       hero.addTask(easy);
       hero.addTask(medium);
-      hero.sortTasks("difficulty");
+      hero.sortTasks("difficulty" , "LowToHigh");
       assert.deepStrictEqual( hero.tasks, [easy, medium, hard]);
     });
     it('by urgency', function(){
@@ -103,7 +103,7 @@ describe('Hero', function() {
       hero.addTask(medium);
       hero.addTask(high);
       hero.addTask(low);
-      hero.sortTasks("urgency");
+      hero.sortTasks("urgency", "LowToHigh");
       assert.deepStrictEqual( hero.tasks, [low, medium, high]);
     });
     it('by reward', function(){
@@ -113,7 +113,7 @@ describe('Hero', function() {
       const lastTask = {reward: lastInAlphabet};
       hero.addTask(lastTask);
       hero.addTask(firstTask);
-      hero.sortTasks("reward");
+      hero.sortTasks("reward", "Alphabetical");
       assert.deepStrictEqual( hero.tasks, [firstTask, lastTask]);
     });
   })
