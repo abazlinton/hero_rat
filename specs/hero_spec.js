@@ -72,7 +72,7 @@ describe('Hero', function() {
     assert.deepStrictEqual(incompleteTasks, expected);
   });
 
-  describe('should be able to sort tasks - basic', function(){
+  describe('should be able to sort tasks - basic (low to high number)', function(){
     it('by a property', function(){
       const task1 = {difficulty: 1};
       const task2 = {difficulty: 2};
